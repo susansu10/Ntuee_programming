@@ -92,6 +92,7 @@ class sheep(animal):
         
         if (operation < 1 or operation > 4):
             print("輸入錯誤")
+            return self.walk_eat()
         else:
             for op, dx, dy in self.direction:
                 if operation == op:
@@ -194,32 +195,32 @@ class food:
 
 
 if __name__ == '__main__':
-    # print("---Start First Way---")
-    # # Todo 1                    
-    # generate_map()
+    print("---Start First Way---")
+    # Todo 1                    
+    generate_map()
 
-    # your_world = little_world('Wonderland')
-    # your_world.info()
-
-    
-    # your_sheep = sheep('Alice', 'sheep', 'grass')
-    # your_sheep.info()
-
-    # your_sheep_food = food('grass')
-    # your_sheep_food.info()
-    # your_sheep_food.generate()
-
-    # little_world.output_map()
+    your_world = little_world('Wonderland')
+    your_world.info()
 
     
-    # your_sheep.walk_eat()
+    your_sheep = sheep('Alice', 'sheep', 'grass')
+    your_sheep.info()
+
+    your_sheep_food = food('grass')
+    your_sheep_food.info()
+    your_sheep_food.generate()
+
+    little_world.output_map()
+
+    
+    your_sheep.walk_eat()
 
 
-    # little_world.output_map()
+    little_world.output_map()
 
-    # print("---Wait for 5 seconds, will change to second way---")
-    # time.sleep(5)
-    # clear_output()
+    print("---Wait for 5 seconds, will change to second way---")
+    time.sleep(5)
+    clear_output()
 
     print("---Start Second Way---")
     generate_map()
