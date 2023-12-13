@@ -66,7 +66,7 @@ class animal(abc.ABC):
         self.food = food
         self.start_i = 10
         self.start_j = 10
-        self.direction = [(1,-1,0), (2,1,0), (3,0,-1), (4,0,1)] #(op:1,上)
+        self.direction = [(1,-1,0), (2,1,0), (3,0,-1), (4,0,1)] #(op:1,上 / op:2,下 / op:3,左 / op:4,右)
         
         if self.species == 'sheep':
             mmap[self.start_i][self.start_j] = 'S'
@@ -147,6 +147,10 @@ class dog(animal):
                         add_path_dist = dist + 1
                         queue.append((next_i, next_j, add_path_dist))
                         visited[next_i][next_j] = 1
+                        if mmap[next_i][next_j] != 'M':
+                            mmap[next_i][next_j] = 'B'
+                        print("Dog Move !")
+                        little_world.output_map()
     
     def print_path(self, dis, food_i, food_j):
         
@@ -189,42 +193,46 @@ class food:
 
 
 
-print("---Start First Way---")                    
-generate_map()
+if __name__ == '__main__':
+    # print("---Start First Way---")
+    # # Todo 1                    
+    # generate_map()
 
-yun_world = little_world('Wonderland')
-yun_world.info()
+    # your_world = little_world('Wonderland')
+    # your_world.info()
 
-yun_sheep = sheep('Alice', 'sheep', 'grass')
-yun_sheep.info()
+    
+    # your_sheep = sheep('Alice', 'sheep', 'grass')
+    # your_sheep.info()
 
-yun_sheep_food = food('grass')
-yun_sheep_food.info()
-yun_sheep_food.generate()
+    # your_sheep_food = food('grass')
+    # your_sheep_food.info()
+    # your_sheep_food.generate()
 
-little_world.output_map()
+    # little_world.output_map()
 
-yun_sheep.walk_eat()
+    
+    # your_sheep.walk_eat()
 
 
-little_world.output_map()
+    # little_world.output_map()
 
-print("---Wait for 5 seconds, will change to second way---")
-time.sleep(5)
-clear_output()
+    # print("---Wait for 5 seconds, will change to second way---")
+    # time.sleep(5)
+    # clear_output()
 
-print("---Start Second Way---")
-generate_map()
+    print("---Start Second Way---")
+    generate_map()
 
-yun_dog = dog('Bob', 'dog', 'meat')
-yun_dog.info()
+    your_dog = dog('Bob', 'dog', 'meat')
+    your_dog.info()
 
-yun_dog_food = food('meat')
-yun_dog_food.info()
-meat_i, meat_j = yun_dog_food.generate()
+    your_dog_food = food('meat')
+    your_dog_food.info()
+    meat_i, meat_j = your_dog_food.generate()
 
-little_world.output_map()
+    little_world.output_map()
 
-yun_dog.walk_eat(meat_i, meat_j)
-little_world.output_map()
+    your_dog.walk_eat(meat_i, meat_j)
+    little_world.output_map()
 
